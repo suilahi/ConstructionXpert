@@ -29,13 +29,6 @@ public class Projet {
 
     public Projet() { }
 
-    public Projet(String nom, String description, String dateDebut, String dateFin, Double budget) {
-
-    }
-
-    public Projet(int idProjet, String nom, String description, String dateDebut, String dateFin, Double budget) {
-
-    }
     //Getter et Setter
 
     public int getId() {

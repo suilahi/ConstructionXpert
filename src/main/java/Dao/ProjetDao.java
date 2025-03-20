@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static Utils.DataBaseConnection.getConnection;
@@ -66,8 +67,8 @@ public class ProjetDao {
                 int id_projet = rs.getInt("id_projet");
                 String nom = rs.getString("nom");
                 String description = rs.getString("description");
-                String dateDebut = rs.getString("date_debut");
-                String dateFin = rs.getString("date_fin");
+                Date dateDebut = rs.getDate("date_debut");
+                Date dateFin = rs.getDate("date_fin");
                 Double budget = rs.getDouble("budget");
                 projets.add(new Projet(id_projet,nom,description,dateDebut,dateFin,budget));
             }
