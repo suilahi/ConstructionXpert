@@ -8,9 +8,9 @@ public class Projet {
     private String Description;
     private Date DateDebut;
     private Date DateFin;
-    String budget;
+    private Double budget;
 
-    public Projet(int id_projet, String nom, String description, Date dateDebut, Date dateFin, String budget) {
+    public Projet(int id_projet, String nom, String description, Date dateDebut, Date dateFin, Double budget) {
         this.id_projet = id_projet;
         this.nom = nom;
         Description = description;
@@ -19,7 +19,7 @@ public class Projet {
         this.budget = budget;
     }
 
-    public Projet(String nom, String description, Date dateDebut, Date dateFin, String budget) {
+    public Projet(String nom, String description, Date dateDebut, Date dateFin, Double budget) {
         this.nom = nom;
         Description = description;
         DateDebut = dateDebut;
@@ -29,11 +29,11 @@ public class Projet {
 
     public Projet() { }
 
-    public Projet(String nom, String description, String dateDebut, String dateFin, String budget) {
+    public Projet(String nom, String description, String dateDebut, String dateFin, Double budget) {
 
     }
 
-    public Projet(int idProjet, String nom, String description, String dateDebut, String dateFin, String budget) {
+    public Projet(int idProjet, String nom, String description, String dateDebut, String dateFin, Double budget) {
 
     }
     //Getter et Setter
@@ -43,7 +43,7 @@ public class Projet {
     }
 
     public void setId(int id) {
-        this.id_projet = id_projet;
+        this.id_projet = id;
     }
 
     public String getNom() {
@@ -78,11 +78,12 @@ public class Projet {
         DateFin = dateFin;
     }
 
-    public String getBudget() {
+    public double getBudget() {
         return budget;
     }
 
-    public void setBudget(String budget) {
+    public void setBudget(double budget) {
+
         this.budget = budget;
     }
 }
