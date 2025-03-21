@@ -30,5 +30,24 @@ public class TacheDao {
         }
     }
 
+    public List<Tache> getAlltaches (){
+        List<Tache> taches = new ArrayList<>();
+        String query = "Select * from tache";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int id_tache = rs.getInt("id_tache");
+                int id_projet = rs.getInt("id_projet");
+                String description = rs.getString("description");
+                Date dateDebut = rs.getDate("date_debut");
+                Date dateFin = rs.getDate("date_fin");
+                taches.add(new Tache(id_tache,id_projet,description,dateDebut,dateFin));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return taches ;
+    }
 
 }
