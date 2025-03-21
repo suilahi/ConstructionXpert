@@ -29,7 +29,14 @@ public class TacheServlet extends HttpServlet {
                 req.setAttribute("taches", tacheDao.gettachebyid(id_tache));
                 req.getRequestDispatcher("/ModifierTache.jsp").forward(req, resp);
                 return;
-
+            case "delete":
+                try {
+                    tacheDao.DeleteTache(id_tache);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                resp.sendRedirect("TacheServlet?action=list");
+                return;
             case "list":
             default:
                 List<Tache> taches = tacheDao.getAlltaches();
@@ -42,6 +49,8 @@ public class TacheServlet extends HttpServlet {
 
 
     }
+
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

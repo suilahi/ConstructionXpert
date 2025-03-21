@@ -90,7 +90,8 @@ public class TacheDao {
         return tache;
     }
     public void DeleteTache(int id_tache) throws SQLException{
-        String query = "delete from projet where id_tache = ?;";
+
+        String query = "delete from tache where id_tache = ?;";
         try(Connection connection = DataBaseConnection.getConnection();
             PreparedStatement stmt = connection.prepareStatement(query)){
 
