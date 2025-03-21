@@ -2,6 +2,7 @@ package Dao;
 
 import Model.Projet;
 import Model.Tache;
+import Utils.DataBaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,6 +49,55 @@ public class TacheDao {
             throw new RuntimeException(e);
         }
         return taches ;
+    }
+
+    public Tache gettachebyid (int id_tache ) {
+        String query = "Select * from tache where id_tache=?";
+        Tache tache = null;
+        try (Connection conn = getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, id_tache);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tache = new Tache();
+                tache.setId_tache(rs.getInt("id_tache"));
+                tache.setId_proget(rs.getInt("id_projet"));
+                tache.setDescription(rs.getString("description"));
+                tache.setDate_debut(rs.getDate("date_debut"));
+                tache.setDate_fin(rs.getDate("date_fin"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tache;
+    }
+
+    public Tache UpdateTache(Tache tache) throws SQLException{
+        String sql = "UPDATE tache SET id_projet=?, description = ?, date_debut = ?, date_fin = ? WHERE id_tache = ?";
+        PreparedStatement stmt = DataBaseConnection.getConnection().prepareStatement(sql);
+        stmt.setInt(1,tache.getId_proget());
+        stmt.setString(2, tache.getDescription() != null ? tache.getDescription() : "");
+        stmt.setDate(3, tache.getDate_debut() != null ? (java.sql.Date) tache.getDate_debut() : new java.sql.Date(System.currentTimeMillis()));
+        stmt.setDate(4, tache.getDate_fin() != null ? (java.sql.Date) tache.getDate_fin() : new java.sql.Date(System.currentTimeMillis()));
+        stmt.setInt(5,tache.getId_tache());
+
+        int rowsUpdated = stmt.executeUpdate();
+        if (rowsUpdated == 0) {
+            throw new SQLException("No project found with ID " + tache.getId_tache());
+        }
+
+        return tache;
+    }
+    public void DeleteTache(int id_tache) throws SQLException{
+        String query = "delete from projet where id_tache = ?;";
+        try(Connection connection = DataBaseConnection.getConnection();
+            PreparedStatement stmt = connection.prepareStatement(query)){
+
+            stmt.setInt(1, id_tache);
+            stmt.executeUpdate();
+        }
+
     }
 
 }
