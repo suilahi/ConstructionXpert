@@ -8,93 +8,84 @@
     <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/assets/images/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-
     <!-- All css files are included here. -->
-    <!-- Bootstrap fremwork main css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css">
-    <!-- Owl Carousel  main css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/owl.theme.default.min.css">
-    <!-- This core.css file contents all plugings css file. -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/core.css">
-    <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/shortcode/shortcodes.css">
-    <!-- Theme main style -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/style.css">
-    <!-- Responsive css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/responsive.css">
-    <!-- User style -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/custom.css">
-
 
     <!-- Modernizr JS -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
+
 <body class="w-full min-h-screen flex flex-col bg-no-repeat bg-cover" style="background-image: url('./resources/assets/images/bg/1.jpg');">
-<div class="container mx-auto bg-white/80 p-6 shadow-lg rounded-lg">
 
-
-    <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2 col-sm-6 col-xs-7">
-                    <div class="logo">
-                        <a href="index.jsp">
-                            <img src="${pageContext.request.contextPath}/resources/assets/images/logo/sinply-construction.png" alt="logo image">
-                        </a>
-                    </div>
+<!-- Sticky Header / Menu -->
+<div id="sticky-header-with-topbar" class=" bg-white mainmenu__wrap sticky__header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-6 col-xs-7">
+                <div class="logo">
+                    <a href="index.jsp">
+                        <img src="${pageContext.request.contextPath}/resources/assets/images/logo/sinply-construction.png" alt="logo image">
+                    </a>
                 </div>
-                <div class="col-md-8 col-sm-6 col-xs-5">
-                    <nav class="main__menu__nav  hidden-xs hidden-sm">
-                        <ul class="main__menu">
-                            <li class="drop"><a href="index.jsp">HOME</a></li>
-                            <li><a href="About.jsp">ABOUT</a></li>
-                            <li class="drop"><a href="#">pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="ProjetServlet?action=list">projects</a></li>
-                                </ul>
-                            </li>
+            </div>
+            <div class="col-md-8 col-sm-6 col-xs-5">
+                <nav class="main__menu__nav  hidden-xs hidden-sm">
+                    <ul class="main__menu">
 
+                        <li class="drop"><a href="index.jsp">HOME</a></li>
+
+                        <li><a href="About.jsp">ABOUT</a></li>
+
+                        <li><a href="ProjetServlet?action=list">projects</a></li>
+
+                    </ul>
+                </nav>
+                <div class="mobile-menu clearfix visible-xs visible-sm">
+                    <nav id="mobile_dropdown">
+                        <ul class="space-y-4">
+                            <li><a href="index.jsp" class="block text-lg text-gray-700 hover:text-blue-500">HOME</a></li>
+                            <li><a href="Ajoutertache.jsp" class="block text-lg text-gray-700 hover:text-blue-500">Tache</a></li>
+                            <li><a href="About.jsp" class="block text-lg text-gray-700 hover:text-blue-500">ABOUT</a></li>
+                            <li><a href="ProjetServlet?action=list" class="block text-lg text-gray-700 hover:text-blue-500">PROJECTS</a></li>
                         </ul>
                     </nav>
-                    <div class="mobile-menu clearfix visible-xs visible-sm">
-                        <nav id="mobile_dropdown">
-                            <ul>
-                                <li><a href="index.jsp">Home</a>
-
-                                </li>
-                                <li><a href="About.jsp">ABOUT</a></li>
-                                <li><a href="#">PROJECTS</a>
-                                    <ul>
-                                        <li><a href="projects-one.jsp">projects one</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">pages</a>
-                                    <ul>
-                                        <li><a href="projects-one.jsp">projects one</a></li>
-                                        <li><a href="single-project.jsp">Single Project</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
                 </div>
             </div>
 
+            <div class="col-md-2 col-sm-6 hidden-xs">
+                <div class="htc__header__search">
+                    <input type="text" placeholder="SEARCH">
+                    <a href="#"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-area "></div>
+    </div>
+</div>
+<!-- End Mainmenu Area -->
+</div>
+<div class="container mx-auto bg-white/80 p-6 shadow-lg rounded-lg mt-10">
     <h2 class="text-2xl font-bold text-gray-800 text-center mb-10">Liste des Projets</h2>
     <a href="ajouterProjet.jsp" class="bg-transparent border border-blue-500 text-blue-500 px-4 py-2 rounded block w-max mx-auto hover:bg-blue-500 hover:text-white">Ajouter un Projet</a>
 
     <%
         ProjetDao projetDAO = new ProjetDao();
         List<Projet> projets = projetDAO.getAllProjets();
-
     %>
-    <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 mt-10">
+
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         <% if (projets != null && !projets.isEmpty()) { %>
         <% for (Projet projet : projets) { %>
         <div class="group">
-            <div class="relative flex flex-col items-center justify-center w-[350px] h-auto max-w-full border border-gray-100 bg-white rounded-lg shadow-lg transition-all duration-500 p-5">
-                <img src="resources/assets/images/blog/sm-img/1.jpg" class="w-full h-56 rounded-lg object-cover mb-4" alt="Projet Image">
+            <div class="relative flex flex-col items-center justify-center w-full h-auto border border-gray-100 bg-white rounded-lg shadow-lg transition-all duration-500 p-5">
+                <img src="resources/assets/images/lst-project-2/1.jpg" class="w-full h-56 rounded-lg object-cover mb-4" alt="Projet Image">
                 <h2 class="text-2xl font-extrabold text-green-800 text-center"><%= projet.getNom() %></h2>
                 <p class="text-base font-normal mt-2 text-neutral-950 text-center"><%= projet.getDescription() %></p>
                 <p class="text-lg font-semibold text-gray-700 mt-2 text-center">Budget (MAD) : <%= projet.getBudget() %></p>
@@ -109,6 +100,21 @@
         <p class="text-center text-gray-700 mt-10">Aucun projet disponible.</p>
         <% } %>
     </div>
+</div>
+
+<script src="${pageContext.request.contextPath}/resources/assets/js/vendor/jquery-1.12.0.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/assets/js/plugins.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/assets/js/slick.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/assets/js/owl.carousel.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/assets/js/waypoints.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
 
 </body>
 </html>

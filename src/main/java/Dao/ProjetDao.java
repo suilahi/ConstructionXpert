@@ -93,7 +93,6 @@ public class ProjetDao {
             throw new SQLException("No project found with ID " + projet.getId());
         }
 
-
         return projet;
         }
 

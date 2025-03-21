@@ -63,34 +63,24 @@
                     <div class="col-md-8 col-sm-6 col-xs-5">
                         <nav class="main__menu__nav  hidden-xs hidden-sm">
                             <ul class="main__menu">
+
                                 <li class="drop"><a href="index.jsp">HOME</a></li>
+
                                 <li><a href="About.jsp">ABOUT</a></li>
-                                <li class="drop"><a href="#">pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="ProjetServlet?action=list">projects</a></li>
-                                    </ul>
-                                </li>
+
+                                <li><a href="Listetache.jsp">Taches</a></li>
+
+                                <li><a href="ProjetServlet?action=list">projects</a></li>
 
                             </ul>
                         </nav>
                         <div class="mobile-menu clearfix visible-xs visible-sm">
                             <nav id="mobile_dropdown">
-                                <ul>
-                                    <li><a href="index.jsp">Home</a>
-
-                                    </li>
-                                    <li><a href="About.jsp">ABOUT</a></li>
-                                    <li><a href="#">PROJECTS</a>
-                                        <ul>
-                                            <li><a href="projects-one.jsp">projects one</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">pages</a>
-                                        <ul>
-                                            <li><a href="projects-one.jsp">projects one</a></li>
-                                            <li><a href="single-project.jsp">Single Project</a></li>
-                                        </ul>
-                                    </li>
+                                <ul class="space-y-4">
+                                    <li><a href="index.jsp" class="block text-lg text-gray-700 hover:text-blue-500">HOME</a></li>
+                                    <li><a href="Ajoutertache.jsp" class="block text-lg text-gray-700 hover:text-blue-500">Tache</a></li>
+                                    <li><a href="About.jsp" class="block text-lg text-gray-700 hover:text-blue-500">ABOUT</a></li>
+                                    <li><a href="ProjetServlet?action=list" class="block text-lg text-gray-700 hover:text-blue-500">PROJECTS</a></li>
                                 </ul>
                             </nav>
                         </div>

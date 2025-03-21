@@ -30,7 +30,7 @@ public class ProjetServlet extends HttpServlet {
                 case "edit":
                     req.setAttribute("projet", projetDAO.getprojetbyid(id_projet));
                     req.getRequestDispatcher("/ModifierProjet.jsp").forward(req, resp);
-                    return; // Arrête l'exécution après la redirection
+                    return;
 
                 case "delete":
                     projetDAO.DeleteProjet(id_projet);
@@ -39,7 +39,6 @@ public class ProjetServlet extends HttpServlet {
                 case "list":
                 default:
                     List<Projet> projets = projetDAO.getAllProjets();
-                    System.out.println("Nombre de projets récupérés : " + (projets != null ? projets.size() : "null"));
                     req.setAttribute("projets", projets);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("ListeProjet.jsp");
                     dispatcher.forward(req, resp);
@@ -69,7 +68,6 @@ public class ProjetServlet extends HttpServlet {
                 projetDAO.ajouterProjet(projet);
             }
 
-            // Rediriger vers la servlet pour afficher la liste après insertion ou modification
             resp.sendRedirect("ProjetServlet?action=list");
 
         } catch (SQLException e) {
