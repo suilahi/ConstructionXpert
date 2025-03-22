@@ -25,17 +25,22 @@ public class ProjetServlet extends HttpServlet {
         String action = req.getParameter("action");
         int id_projet = req.getParameter("id_projet") != null ? Integer.parseInt(req.getParameter("id_projet")) : -1;
 
+
         try {
+
             switch (action != null ? action : "") {
+
                 case "edit":
                     req.setAttribute("projet", projetDAO.getprojetbyid(id_projet));
                     req.getRequestDispatcher("/ModifierProjet.jsp").forward(req, resp);
                     return;
 
                 case "delete":
+
                     projetDAO.DeleteProjet(id_projet);
                     resp.sendRedirect("ProjetServlet?action=list");
                     return;
+
                 case "list":
                 default:
                     List<Projet> projets = projetDAO.getAllProjets();

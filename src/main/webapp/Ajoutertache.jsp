@@ -16,8 +16,8 @@
     <form action="TacheServlet" method="POST" class="space-y-4">
 
         <div>
-            <label for="project_id" class="block font-bold sm:text-sm">Project</label>
-            <select id="project_id" name="project_id" required class="w-full p-4 sm:p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F4A261]">
+            <label for="id_projet" class="block font-bold sm:text-sm">Project</label>
+            <select id="id_projet" name="id_projet" required class="w-full p-4 sm:p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F4A261]">
                 <option value="">Select a project</option>
                 <%
                     ProjetDao projectDAO = new ProjetDao();

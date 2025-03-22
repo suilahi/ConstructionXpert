@@ -40,7 +40,9 @@
                     <ul class="main__menu">
                         <li class="drop"><a href="index.jsp">HOME</a></li>
                         <li><a href="About.jsp">ABOUT</a></li>
-                        <li><a href="TacheServlet?action=list">Tâches</a></li>
+                        <li><a href="TacheServlet?action=list">Taches</a></li>
+                        <li><a href="ProjetServlet?action=list">projects</a></li>
+
                     </ul>
                 </nav>
             </div>
@@ -51,7 +53,7 @@
 
 <div class="container mx-auto bg-white/80 p-6 shadow-lg rounded-lg mt-10">
     <h2 class="text-2xl font-bold text-gray-800 text-center mb-10">Liste des Tâches</h2>
-    <a href="Ajoutertache.jsp" class="bg-transparent border border-blue-500 text-blue-500 px-4 py-2 rounded block w-max mx-auto hover:bg-blue-500 hover:text-white">Ajouter une Tâche</a>
+    <a href="Ajoutertache.jsp" class="bg-blue-500  border border-blue-500 text-white  px-4 py-2 rounded block w-max mx-auto hover:bg-transparent hover:text-blue-500">Ajouter une Tâche</a>
 
     <%
         TacheDao tacheDAO = new TacheDao();
@@ -79,8 +81,8 @@
                 <td class="py-2 px-4"><%= tache.getDate_debut() %></td>
                 <td class="py-2 px-4"><%= tache.getDate_fin() %></td>
                 <td class="py-2 px-4">
-                    <a href="TacheServlet?action=edit&id_tache=<%= tache.getId_tache() %>" class="text-green-500 hover:text-green-700">Modifier</a> |
-                    <a href="TacheServlet?action=delete&id_tache=<%= tache.getId_tache() %>" class="text-red-500 hover:text-red-700">Supprimer</a>
+                    <a href="TacheServlet?action=edit&id_tache=<%= tache.getId_tache() %>" class="slider__btn htc__btn bg-[#0F67B1] hover:bg-white/10">Modifier</a> |
+                    <a href="TacheServlet?action=delete&id_tache=<%= tache.getId_tache() %>" class="slider__btn htc__btn ">Supprimer</a>
                 </td>
             </tr>
             <% } %>
