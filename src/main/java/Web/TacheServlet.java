@@ -33,7 +33,7 @@ public class TacheServlet extends HttpServlet {
                 try {
                     tacheDao.DeleteTache(id_tache);
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
                 resp.sendRedirect("TacheServlet?action=list");
                 return;
